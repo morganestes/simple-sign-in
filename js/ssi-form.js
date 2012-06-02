@@ -6,10 +6,6 @@ jQuery(function($) {
 	// handle the dropdown and show the form
 	$('.ssi-toggle').click(function(e) {
 		e.preventDefault();
-		// pre-fill the bar number field on before opening
-		if (localStorage.ssi_user !== null) {
-			$("#ssi-user").val(localStorage.ssi_user);
-		}
 		$('.ssi-form-wrapper').toggle();
 		$('.ssi-toggle').toggleClass('menu-open');
 
@@ -55,27 +51,4 @@ function check_whereto() {
 	}
 	// now keep on truckin' and submit the form
 	ssi_form.submit();
-
-	// see if we can save the user number for the next time
-	ssi_save_user();
-}
-
-function supports_html5_storage() {
-	try {
-		return 'localStorage' in window && window['localStorage'] !== null;
-	} catch (e) {
-		return false;
-	}
-}
-
-function ssi_save_user() {
-	if (!supports_html5_storage()) {
-		console.log('no localStorage');
-		return false;
-	} else {
-		$("#simple-sign-in").submit(function() {
-			localStorage.ssi_user = $("#ssi-user").val();
-			console.log(localStorage.ssi_user);
-		});
-	}
 }
