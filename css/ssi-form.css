@@ -2,20 +2,20 @@
  * Dropdown Signin to emulate a Twitter-like sign-in experience
  */
 
-#signin-wrapper {
+.ssi-wrapper {
   position: relative;
   *display: inline-block;
   float: right;
   width: 240px;
 }
 
-#signin-topnav {
+#ssi-top {
   padding: 9px 15px 0;
   font-size: 11px;
   text-align: right;
 }
 
-#signin-topnav a.signin-link {
+.ssi-toggle {
   padding: 4px 6px 6px;
   *padding: 0 6px;
   font-weight: bold;
@@ -27,21 +27,21 @@
           border-radius: 4px;
 }
 
-#signin-topnav a.signin-link:hover {
+.ssi-toggle:hover {
   background: #59B;
 }
 
-#signin-topnav a.signin-link,
-#signin-topnav a.signin-link:hover {
+.ssi-toggle,
+.ssi-toggle:hover {
   *background-position: 0 3px !important;
 }
 
-.signin-link {
+.ssi-toggle {
   position: relative;
   margin-left: 3px;
 }
 
-.signin-link span {
+.ssi-toggle span {
   padding: 4px 16px 6px 0;
   color: #f8faed;
   background-image: url(../images/toggle_down_light.png);
@@ -49,7 +49,7 @@
   background-repeat: no-repeat;
 }
 
-.signin-link.menu-open {
+.ssi-toggle.menu-open {
   color: #666 !important;
     background: #ddeef6 !important;
     -webkit-border-radius: 4px 4px 0 0;
@@ -57,12 +57,12 @@
     border-radius: 4px 4px 0 0;
 }
 
-.signin-link.menu-open span {
+.ssi-toggle.menu-open span {
   color: #789;
   background-image: url(../images/toggle_up_dark.png);
 }
 
-#signin-menu {
+.ssi-form-wrapper {
   position: absolute;
   top: 23px;
   right: 15px;
@@ -86,8 +86,8 @@
           border-top-right-radius: 0;
 }
 
-#signin-menu input[type="text"],
-#signin-menu input[type="password"] {
+#simple-sign-in input[type="text"],
+#simple-sign-in input[type="password"] {
   display: block;
   width: 203px;
   padding: 5px;
@@ -98,29 +98,29 @@
      -moz-border-radius: 4px;
 }
 
-#signin-menu p {
+.ssi-form-wrapper p {
   margin: 0;
 }
 
-#signin-menu a {
+.ssi-form-wrapper a {
   color: #6AC;
 }
 
-#signin-menu label {
+#simple-sign-in label {
   font-weight: normal;
 }
 
-#signin-menu p.remember {
+.ssi-form-wrapper p.remember {
   padding: 10px 0;
 }
 
-#signin-menu p.forgot,
-#signin-menu p.complete {
+.ssi-form-wrapper p.forgot,
+.ssi-form-wrapper p.complete {
   margin: 5px 0;
   clear: both;
 }
 
-#signin-menu p a {
+.ssi-form-wrapper p a {
   color: #27B!important;
 }
 
