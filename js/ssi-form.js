@@ -6,12 +6,10 @@ jQuery(document).ready(function($) {
 	// handle the dropdown and show the form
 	$('.signin-link').click(function(e) {
 		e.preventDefault();
-		$('#signin_menu').toggle();
+		$('#signin-menu').toggle();
 		$('.signin-link').toggleClass('menu-open');
 
-		// only load the DOMWindow script if the signin form is displayed,
-		// then set it to open if the forgot password link is clicked
-		$.getScript(base_path + 'js/jquery.DOMWindow.js', function() {
+
 			// open PIN reset options in modal window
 			$('a#resend-password-link').openDOMWindow({
 				draggable: 1,
@@ -21,13 +19,12 @@ jQuery(document).ready(function($) {
 				windowSource: 'iframe',
 				windowPadding: 10,
 				loader: 1,
-				loaderImagePath: base + 'images/ajax-loader.gif',
+				loaderImagePath: 'images/ajax-loader.gif',
 				// relative path to the image needed
 				loaderHeight: 48,
 				loaderWidth: 48
 			}); // end modal
-		}); // end getScript
-	}); // end signing display
+	}); // end sign-in display
 
 	// don't fire the submit if you're just closing the form
 	$('#signin-menu').mouseup(function() {
@@ -43,9 +40,9 @@ jQuery(document).ready(function($) {
 	});
 
 function submitForm() {
-	var form_url = $('#simple-sign-in').attr('action'),
-		whereto = $('input[name="whereto"]:checked').val(),
-		ssi_form = $('#simple-sign-in');
+	var ssi_form = $('#simple-sign-in'),
+		form_url = ssi_form.attr('action'),
+		whereto = $('input[name="whereto"]:checked').val();
 
 	// if they're going to Fastcase, validate their info and send them on
 	if (whereto === 'fastcase') {

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Simple sign-in
+Plugin Name: Simple Sign-in (SSI)
 Plugin URI: https://github.com/morganestes/simple-sign-in
 Description: Adds a simple dropdown/expanding sign-in form wherever needed.
 Version: 0.1
@@ -30,36 +30,30 @@ Author URI: http://morganestes.me/
  * **********************************************************************
  */
 
+define( 'SIMPLE_SIGNIN_PATH', plugin_dir_path( __FILE__ ) );
 
-add_action( 'wp_print_styles', 'add_signin_styles' );
-add_action( 'wp_print_scripts', 'add_signin_scripts' );
+add_action( 'wp_print_styles', 'add_simple_signin_styles' );
+add_action( 'wp_print_scripts', 'add_simple_signin_scripts' );
 
-function add_signin_styles() {
-
-  wp_register_style( 'signin', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/signin/css/signin.css', null, null, 'screen' );
-  wp_enqueue_style( 'signin' );
+function add_simple_signin_styles() {
+    wp_register_style( 'signin', SIMPLE_SIGNIN_PATH . 'css/signin.css', null, null, 'screen' );
+    wp_enqueue_style( 'signin' );
 }
 
 function add_signin_scripts() {
-  wp_enqueue_script( 'signin', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/signin/js/signin.js', 'jquery' );
-  wp_enqueue_script( 'showpassword', get_bloginfo( 'wpurl' ) . '/wp-content/plugins/signin/js/jquery.showpassword-1.0.js', 'jquery' );
-  //wp_enqueue_script('DOMWindow', get_bloginfo('wpurl') . '/wp-content/plugins/signin/js/jquery.DOMWindow.js', 'jquery');
+    wp_enqueue_script( 'signin', SIMPLE_SIGNIN_PATH . 'js/signin.js', 'jquery' );
+    wp_enqueue_script( 'showpassword', SIMPLE_SIGNIN_PATH . 'js/jquery.showpassword-1.0.js', 'jquery' );
+    wp_enqueue_script( 'DOMWindow', SIMPLE_SIGNIN_PATH . 'js/jquery.DOMWindow.js', 'jquery' );
 }
 
-function signin() {
-
-  /**
-   * TODO in signin.js (around line 15), change getScript to call a
-   * variable path based on user's current install folder
-   * instead of hard-coded path
-   */
+function show_simple_signin() {
 ?>
-   <div id="signin-wrapper">
+           <div id="signin-wrapper">
             <div id="signin-topnav">
                 <a href="#" class="signin-link"><span>Members, sign in here</span></a>
             </div>
-            <div id="signin_menu">
-                <form method="post" id="signin" name="signin" action="https://secure.okbar.org/logon">
+            <div id="signin-menu">
+                <form method="post" id="simple-sign-in" name="signin" action="https://secure.okbar.org/logon">
                     <label for="user">
                         Bar #
                     </label>
@@ -87,9 +81,9 @@ function signin() {
                             </strong>
                         </label>
                         &emsp;
-                        <input type="radio" name="whereto" id="my" value="my" title="Sign in to MyOKBar"
+                        <input type="radio" name="whereto" id="my" value="my" title="Sign in to myOKBar"
                         />
-                        <label for="my" title="Sign in to MyOKBar">
+                        <label for="my" title="Sign in to myOKBar">
                             <strong>
                                 myOKBar
                             </strong>
@@ -97,11 +91,11 @@ function signin() {
                     </p>
                     <br>
                     <p>
-                        <input id="signin_submit" value="Sign in" tabindex="6" type="submit" onclick="submitForm();"
+                        <input value="Sign in" tabindex="6" type="submit" onclick="submitForm();"
                         />
                     </p>
                     <p class="forgot">
-                        <a href="https://secure.okbar.org/logon/okbarpass" id="resend_password_link">Forgot your password?</a>
+                        <a href="https://secure.okbar.org/logon/okbarpass" id="resend-password-link">Forgot your password?</a>
                     </p>
                 </form>
             </div>
